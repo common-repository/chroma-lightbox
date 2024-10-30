@@ -1,0 +1,74 @@
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin animation-timing-function($timing...) {
+	-o-animation-timing-function: $timing;
+	-moz-animation-timing-function: $timing;
+	-webkit-animation-timing-function: $timing;
+	animation-timing-function: $timing;
+}
+
+
+@mixin animation($animate...) {
+	$max: length($animate);
+	$animations: '';
+
+	@for $t from 1 through $max {
+		$animations: #{$animations + nth($animate, $t)};
+
+		@if $t < $max {
+			$animations: #{$animations + ", "};
+		}
+	}
+	-webkit-animation: $animations;
+	-moz-animation:    $animations;
+	-o-animation:      $animations;
+	-ms-animation:      $animations;
+	animation:         $animations;
+}
+
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+
+@mixin headings {
+	h1, h2, h3,
+	h4, h5, h6 {
+		@content;
+	}
+}
+
+
+@mixin transition($target, $time) {
+	-webkit-transition: $target $time ease;
+	-moz-transition: $target $time ease;
+	-o-transition: $target $time ease;
+	transition: $target $time ease;
+}
+@mixin forcegpu() {
+	-webkit-transform: translate3d(0,0,0px);
+	-moz-transform: translate3d(0,0,0px);
+	-ms-transform: translate3d(0,0,0px);
+	-o-transform: translate3d(0,0,0px);
+	transform: translate3d(0,0,0px);
+	/* Other transform properties here */
+}

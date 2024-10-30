@@ -1,0 +1,107 @@
+#chroma_lightbox-settings-container {
+  padding-right: 20px; }
+  #chroma_lightbox-settings-container .cga_invalid_id input {
+    border: 1px #f00 solid; }
+  #chroma_lightbox-settings-container .cga_invalid_id:after {
+    content: "Tracking ID invalid";
+    color: #f00;
+    padding-left: 10px; }
+  #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons {
+    display: block;
+    width: 100%;
+    margin: 0;
+    height: 50px; }
+    #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li {
+      display: inline-block;
+      margin: 0;
+      height: 50px; }
+      #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li a.chroma_lightbox-settings-button {
+        position: relative;
+        display: block;
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 8px;
+        padding-bottom: 6px;
+        height: 40px;
+        text-decoration: none;
+        background: #f6f6f6;
+        box-sizing: border-box;
+        top: 10px;
+        border: 1px solid #bbb;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px; }
+        #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li a.chroma_lightbox-settings-button p {
+          color: #555;
+          font-size: 1.2em;
+          margin: 0; }
+      #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li a:focus, #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li a:active {
+        outline: 0 !important;
+        box-shadow: none; }
+      #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li[aria-expanded=true] a.chroma_lightbox-settings-button {
+        background: #fff;
+        top: 0;
+        height: 50px;
+        border-bottom: 0px; }
+        #chroma_lightbox-settings-container ul#chroma_lightbox-settings-tab-buttons li[aria-expanded=true] a.chroma_lightbox-settings-button p {
+          color: #000; }
+  #chroma_lightbox-settings-container > h2 {
+    font-size: 2em;
+    margin-bottom: 1em; }
+  #chroma_lightbox-settings-container .chroma_lightbox-settings-subhead {
+    font-weight: normal;
+    font-size: 1.6em;
+    margin: 0;
+    margin-top: 10px; }
+  #chroma_lightbox-settings-container .chroma_lightbox-settings-subhead-text {
+    margin: 0;
+    margin-bottom: 5px; }
+  #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container {
+    background: #fff;
+    outline: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container h2 {
+      font-size: 1.5em;
+      margin: 0;
+      border: 0px #ccc solid;
+      border-bottom-width: 1px;
+      padding-bottom: 4px; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container ul {
+      list-style: square;
+      padding-left: 20px;
+      margin: 0; }
+      #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container ul li {
+        margin: 0; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container .chroma_lightbox-settings-description {
+      margin: 0;
+      margin-bottom: 10px; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr:not(:first-of-type) {
+      border: 0px #eee solid;
+      border-top-width: 1px; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr th, #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr td {
+      vertical-align: middle;
+      padding: 0;
+      padding-bottom: 10px;
+      padding-top: 10px; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr th {
+      width: 50px;
+      white-space: nowrap;
+      padding-right: 40px; }
+      #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr th p {
+        margin: 0;
+        font-weight: lighter;
+        font-size: 0.9em; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container table tbody tr td input[type="text"] {
+      width: 100%;
+      max-width: 300px; }
+    #chroma_lightbox-settings-container .chroma_lightbox-settings-section-container#chroma_lightbox-settings-section-section_2_start table tbody tr th p {
+      width: 200px;
+      white-space: normal; }
+
+.var-dump {
+  position: relative;
+  background: #ff0;
+  z-index: 9999; }

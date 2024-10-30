@@ -1,0 +1,300 @@
+@import "../../includes/css/mixins";
+
+$but_size : 70px;
+
+.clb-slideshow-trans {
+    @include transition(all,0.7s);
+
+}
+
+#clb-container {
+    & * {
+        -webkit-transform-style: preserve-3d;
+
+    }
+    display: none;
+    position: fixed;
+    width:100%;
+    height:100vh;
+    z-index:10000;
+    top:0;
+    left:0;
+
+
+    #clb-spinner {
+        position: fixed;
+        display: block;
+        height:50px;
+        width:50px;
+        z-index: 999999;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        display: block;
+        opacity:1;
+        background-image:url("../images/spinner.png");
+        //background-color:#f00;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        //background-attachment: fixed;
+
+        @include forcegpu();
+        @include animation('dynaspinner 2s linear infinite');
+        @include keyframes('dynaspinner') {
+            0% { @include transform(rotate(0)); }
+            100% { @include transform(rotate(360deg)); }
+        }
+        img {
+            height:50px;
+            width:50px;
+        }
+    }
+
+
+    #clb-exit-box {
+        position: fixed;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        //background:rgba(#000000, 0.75);
+    }
+    $img_size : 80px;
+    #clb-thumbs {
+        position: absolute;
+        display: block;
+        bottom:0px;
+        left:-9999px;
+        right:-9999px;
+        margin:0 auto;
+        width:100vw;
+        max-width:100vw;
+        text-align: center;
+        height:20%;
+        min-height: 50px;
+        max-height: 100px;
+        //background:#f00;
+        //padding:10px;
+        //white-space: nowrap;
+        #clb-thumbs-table {
+            //background:#f00;
+            display: inline-table;
+            table-layout: fixed;
+            height:100%;
+
+            a {
+                position: relative;
+                display: table-cell;
+                opacity:1;
+                //border: 2px #fff solid;
+                //border-width:2px;
+
+                box-sizing: border-box;
+                top:0;
+                font-size:0;
+                background-position: center;
+                background-size: cover;
+                background-clip: padding-box;
+
+                width:$img_size;
+                height:100%;
+
+                @include forcegpu();
+                @include transition(all,0.4s);
+
+                //background-clip: content-box;
+                box-shadow: 0 0 0px rgba(#000000, 0.0);
+                img {
+                    display: none;
+                }
+                &:after {
+                content:"";
+                position: absolute;
+                background-color:#fff;
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                opacity:0.3;
+                }
+                &:hover {
+                    @include transform(scale(1.1));
+                    box-shadow: 0 0 10px rgba(#000000, 0.8);
+                    z-index:200;
+                    cursor: pointer;
+                    &:after {
+                    display:none;
+                    }
+
+
+                }
+                &.clb-thumb-active {
+                    @include transform(scale(1.1));
+                    box-shadow: 0 0 20px rgba(#000000, 0.8);
+                    z-index:100;
+                    //border-width:5px;
+                    top:-10px;
+                    &:after {
+
+                        display:none;
+                    }
+
+                }
+            }
+        }
+        @for $i from 1 to 10 {
+            @media screen and (max-width:#{($i*$img_size)+($img_size*0.1)}) {
+                &[data_cgsize="#{$i}"] {
+                    img {
+                        @include forcegpu();
+                        width: #{90/$i}% !important;
+                        height: #{90/$i}% !important;
+                    }
+
+
+                }
+            }
+
+        }
+
+    }
+
+    #clb-frame {
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        display: block;
+        background:#000;
+        //padding:10px;
+        width:300px;
+        height:300px;
+        @include forcegpu();
+        @include transition(all,0.5s);
+        //border: 10px solid #fff;
+        box-sizing: content-box;
+        box-shadow: 0 30px 60px rgba(#000000, 0.52);
+        //overflow:hidden;
+        opacity:0;
+        #clb-caption {
+            position: absolute;
+            top:20px;
+            left:0;
+            background:rgba(#ffffff, 0.85);
+            padding: 5px 10px;
+        }
+
+        #clb-controls {
+            position: absolute;
+            top:0;
+            width:100%;
+            height:100%;
+            pointer-events: none;
+            //z-index: 1000;
+            //background:#f00;
+
+
+            //display: none;
+            .clb-button {
+                position: absolute;
+                width:10vw;
+                height:10vw;
+                max-width:$but_size;
+                max-height:$but_size;
+                min-width:$but_size*0.7;
+                min-height:$but_size*0.7;
+                background-image: url(../images/slideshow-arrows.jpg);
+                background-size: 300%;
+                top:-9999px;
+                bottom:-9999px;
+                pointer-events: auto;
+                //z-index: 10000;
+                opacity:0.7;
+                margin:auto 0;
+                border-radius:0%;
+                border: transparent solid 0px;
+                @include forcegpu();
+                @include transition(all,0.4s);
+                &#clb-button-prev {
+                    //left:-$but_size/2;
+                    //right:100%;
+
+                }
+                &#clb-button-next {
+                    //right:0;
+                    //left:100%;
+                    //margin-right:-$but_size/2;
+                    background-position: 50%;
+
+
+                }
+                &#clb-button-close {
+
+                    top:0;
+                    bottom:auto;
+                    //left:100%;
+                    margin:none;
+
+                    background-position: 100%;
+
+                }
+                &:hover {
+                    @include transform(scale(1.1));
+                    box-shadow: 0 0 20px rgba(#000000, 0.8);
+                    opacity:1;
+                    //z-index:100;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        #clb-main-image-crop {
+            position: relative;
+            width:100%;
+            height:100%;
+            overflow: hidden;
+
+            #clb-main-image-container, #clb-temp-container {
+                position: relative;
+                width:100%;
+                height:100%;
+                display: block;
+                @include forcegpu();
+                //@include transition(all,0.5s);
+
+                #clb-main-image, #clb-temp-image {
+                    display: block;
+                    position: absolute;
+                    top: -9999px;
+                    bottom: -9999px;
+                    left: -9999px;
+                    right: -9999px;
+                    margin: auto;
+                    width:10px;
+                    height:10px;
+                    max-width: none;
+                    @include forcegpu();
+                    //@include transition(all,0.5s);
+                    max-height: none;
+
+                    //width:100%;
+                    //height:100%;
+                }
+            }
+            #clb-main-image-container {
+                //@include transition(opacity,0.3s);
+
+            }
+            #clb-temp-container {
+                position: absolute;
+                top:0;
+            }
+        }
+
+    }
+}
